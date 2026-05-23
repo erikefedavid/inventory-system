@@ -1,17 +1,17 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, use } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Card } from '@/components/ui/Card';
 
 export default function EditProductPage({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
+  const { id } = use(params);
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState<{ _id: string; name: string }[]>([]);
   const [error, setError] = useState('');
-  const [id, setId] = useState('');
 
   const [form, setForm] = useState({
     name: '',
@@ -22,10 +22,6 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
     reorderPoint: 10,
     description: '',
   });
-
-  useEffect(() => {
-    params.then(({ id }) => setId(id));
-  }, [params]);
 
   useEffect(() => {
     if (!id) return;
@@ -64,8 +60,7 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
       setError(data.error || 'Failed to update product');
       return;
     }
-    router.push(`/inventory/${id}`);
-    router.refresh();
+    window.location.href = `/inventory/${id}`;
   }
 
   if (loading) return <p className="p-6 text-text-secondary">Loading...</p>;

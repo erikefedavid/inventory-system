@@ -9,8 +9,7 @@ export function TopNav({ name, role }: { name: string; role: string }) {
 
   async function logout() {
     await fetch('/api/v1/auth/logout', { method: 'POST', credentials: 'include' });
-    router.push('/login');
-    router.refresh();
+    window.location.href = '/login';
   }
 
   return (
