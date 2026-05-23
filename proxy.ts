@@ -10,7 +10,7 @@ const PUBLIC_ROUTES = new Set([
   '/api/v1/auth/reset-password',
 ]);
 
-export async function proxy(req: NextRequest) {
+export default async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
   // Skip for public routes and static assets
   if (

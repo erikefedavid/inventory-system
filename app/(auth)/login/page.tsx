@@ -30,8 +30,7 @@ export default function LoginPage() {
       setError(data.error || 'Login failed');
       return;
     }
-    router.push('/dashboard');
-    router.refresh();
+    window.location.href = '/dashboard';
   }
 
   return (
