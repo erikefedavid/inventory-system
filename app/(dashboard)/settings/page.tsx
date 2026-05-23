@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Card } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
@@ -32,6 +33,12 @@ export default function SettingsPage() {
   return (
     <div className="mx-auto max-w-lg space-y-6">
       <h1 className="text-2xl font-bold">Settings</h1>
+      <Card className="mb-4">
+        <Link href="/settings/users" className="flex items-center justify-between">
+          <span className="font-medium">User Management</span>
+          <span className="text-sm text-accent-blue">Manage staff →</span>
+        </Link>
+      </Card>
       <Card>
         <form onSubmit={save} className="space-y-4">
           <div>

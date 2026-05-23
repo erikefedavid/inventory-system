@@ -4,8 +4,10 @@ import { getProduct } from '@/lib/services/product.service';
 import { StockTransaction } from '@/lib/models/StockTransaction';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
+import { Button } from '@/components/ui/Button';
 import { getStockStatus, stockStatusStyles } from '@/lib/utils/stockStatus';
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 
 export default async function ProductDetailPage({
   params,
@@ -33,6 +35,9 @@ export default async function ProductDetailPage({
           </div>
           <Badge className={stockStatusStyles[status]}>{status}</Badge>
         </div>
+        <Link href={`/inventory/${id}/edit`}>
+          <Button variant="ghost" className="text-xs">Edit product</Button>
+        </Link>
         <div className="grid gap-4 md:grid-cols-3">
           <Card>
             <p className="text-sm text-text-secondary">Current stock</p>

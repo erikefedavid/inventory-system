@@ -13,6 +13,7 @@ import {
   Settings,
   Shield,
   Tags,
+  Users,
 } from 'lucide-react';
 import type { UserRole } from '@/lib/models/User';
 
@@ -25,6 +26,7 @@ const links = [
   { href: '/alerts', label: 'Alerts', icon: Bell, roles: ['admin', 'manager', 'clerk'] },
   { href: '/reports', label: 'Reports', icon: BarChart3, roles: ['admin', 'manager'] },
   { href: '/categories', label: 'Categories', icon: Tags, roles: ['admin', 'manager'] },
+  { href: '/settings/users', label: 'Users', icon: Users, roles: ['admin'] },
   { href: '/settings', label: 'Settings', icon: Settings, roles: ['admin', 'manager', 'clerk'] },
   { href: '/audit-log', label: 'Audit Log', icon: Shield, roles: ['admin'] },
 ];
