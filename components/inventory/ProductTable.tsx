@@ -29,11 +29,11 @@ export function ProductTable({ products }: { products: ProductRow[] }) {
         <thead className="bg-slate-50 text-text-secondary">
           <tr>
             <th className="px-4 py-3">Product</th>
-            <th className="px-4 py-3">SKU</th>
-            <th className="px-4 py-3">Category</th>
+            <th className="hidden px-4 py-3 md:table-cell">SKU</th>
+            <th className="hidden px-4 py-3 sm:table-cell">Category</th>
             <th className="px-4 py-3">Stock</th>
             <th className="px-4 py-3">Status</th>
-            <th className="px-4 py-3">Price</th>
+            <th className="hidden px-4 py-3 sm:table-cell">Price</th>
           </tr>
         </thead>
         <tbody>
@@ -46,13 +46,13 @@ export function ProductTable({ products }: { products: ProductRow[] }) {
                     {p.name}
                   </Link>
                 </td>
-                <td className="px-4 py-3 text-text-secondary">{p.sku}</td>
-                <td className="px-4 py-3">{p.category?.name ?? '—'}</td>
+                <td className="hidden px-4 py-3 text-text-secondary md:table-cell">{p.sku}</td>
+                <td className="hidden px-4 py-3 sm:table-cell">{p.category?.name ?? '—'}</td>
                 <td className="px-4 py-3">{p.currentStock}</td>
                 <td className="px-4 py-3">
                   <Badge className={stockStatusStyles[status]}>{status}</Badge>
                 </td>
-                <td className="px-4 py-3">₦{p.sellingPrice.toLocaleString()}</td>
+                <td className="hidden px-4 py-3 sm:table-cell">₦{p.sellingPrice.toLocaleString()}</td>
               </tr>
             );
           })}

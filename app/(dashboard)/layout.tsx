@@ -27,7 +27,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
       <Sidebar role={session.role} alertCount={alertCount} />
       <div className="flex flex-1 flex-col overflow-hidden">
         <TopNav name={user.name} role={user.role} />
-        <main className="flex-1 overflow-y-auto bg-slate-50 p-6">{children}</main>
+        <main className="flex-1 overflow-y-auto bg-slate-50 p-4 pt-16 lg:p-6 lg:pt-6">{children}</main>
       </div>
     </div>
   );

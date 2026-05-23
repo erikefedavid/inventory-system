@@ -1,8 +1,9 @@
 import dbConnect from '@/lib/db/mongoose';
 import { getSession } from '@/lib/auth/session';
-import { getDashboardStats, getMovementChartData } from '@/lib/services/dashboard.service';
+import { getDashboardStats, getMovementChartData, getCategoryValueData } from '@/lib/services/dashboard.service';
 import { StatsCard } from '@/components/dashboard/StatsCard';
 import { MovementChart } from '@/components/dashboard/MovementChart';
+import { ValueChart } from '@/components/dashboard/ValueChart';
 import { Card } from '@/components/ui/Card';
 import { Package, DollarSign, AlertTriangle, XCircle } from 'lucide-react';
 
@@ -13,10 +14,14 @@ export default async function DashboardPage() {
 
   let stats;
   let chartData: { name: string; movement: number }[] = [];
+  let valueData: { name: string; value: number }[] = [];
   try {
     stats = await getDashboardStats(session.businessId);
     if (session.role !== 'clerk') {
-      chartData = await getMovementChartData(session.businessId);
+      [chartData, valueData] = await Promise.all([
+        getMovementChartData(session.businessId),
+        getCategoryValueData(session.businessId),
+      ]);
     }
   } catch {
     return (
@@ -64,6 +69,15 @@ export default async function DashboardPage() {
           <MovementChart data={chartData} />
         </Card>
         <Card>
+          <h2 className="mb-4 font-semibold">Stock value by category</h2>
+          <div className="h-full min-h-[200px]">
+            <ValueChart data={valueData} />
+          </div>
+        </Card>
+      </div>
+
+      <div className="grid gap-4 lg:grid-cols-3">
+        <Card>
           <h2 className="mb-4 font-semibold">Today</h2>
           <ul className="space-y-3 text-sm">
             <li className="flex justify-between">
@@ -91,7 +105,7 @@ export default async function DashboardPage() {
                 <th className="pb-2 pr-4">Product</th>
                 <th className="pb-2 pr-4">Type</th>
                 <th className="pb-2 pr-4">Qty</th>
-                <th className="pb-2">When</th>
+                <th className="hidden pb-2 sm:table-cell">When</th>
               </tr>
             </thead>
             <tbody>
@@ -100,7 +114,7 @@ export default async function DashboardPage() {
                   <td className="py-2 pr-4">{(tx.product as { name?: string })?.name ?? '—'}</td>
                   <td className="py-2 pr-4 capitalize">{tx.type.replace('_', ' ')}</td>
                   <td className="py-2 pr-4">{tx.quantity}</td>
-                  <td className="py-2 text-text-secondary">
+                  <td className="hidden py-2 text-text-secondary sm:table-cell">
                     {new Date(tx.createdAt).toLocaleString()}
                   </td>
                 </tr>

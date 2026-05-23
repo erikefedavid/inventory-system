@@ -46,6 +46,20 @@ async function getTodayTransactionCounts(businessId: string) {
   };
 }
 
+export async function getCategoryValueData(businessId: string) {
+  const products = await Product.find({ businessId, isArchived: false })
+    .populate('category', 'name')
+    .select('costPrice currentStock category');
+  const map = new Map<string, number>();
+  for (const p of products) {
+    const name = (p.category as { name?: string })?.name ?? 'Uncategorized';
+    map.set(name, (map.get(name) ?? 0) + (p.currentStock ?? 0) * (p.costPrice ?? 0));
+  }
+  return Array.from(map.entries())
+    .map(([name, value]) => ({ name, value }))
+    .sort((a, b) => b.value - a.value);
+}
+
 export async function getMovementChartData(businessId: string) {
   const since = new Date();
   since.setDate(since.getDate() - 30);
