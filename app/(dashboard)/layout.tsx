@@ -11,7 +11,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
   if (!session) redirect('/login');
 
   await dbConnect();
-  const user = await User.findById(session.userId).select('name role');
+  const user = await User.findById(session.userId).select('name role isActive');
   if (!user || !user.isActive) redirect('/login');
 
   let alertCount = 0;
