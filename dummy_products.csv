@@ -1,0 +1,9 @@
+Name,SKU,Category,Unit,Cost Price,Selling Price,Description,Reorder Point
+20000mAh Power Bank,ELEC-PB20K,Electronics,pcs,8500,13500,High capacity fast charging power bank with dual USB ports,10
+Coca Cola 50cl Case,BEV-COKE,Beverages,cases,2800,3600,Standard case of classic Coca-Cola plastic bottles,8
+Peak Milk Powder 400g,PROV-MILK,Provisions,tins,3400,4200,Rich and creamy instant full cream milk powder tin,12
+Golden Morn Cereal 500g,PROV-GMORN,Provisions,packs,1800,2400,Nutritious breakfast cereal pack,10
+Colgate Toothpaste 140g,TOIL-COLG,Toiletries,packs,850,1200,Maximum cavity protection fluoride toothpaste,20
+USB-C Fast Charger Cable,ELEC-USBC,Electronics,pcs,1200,2500,Durable braided nylon USB-C charging cable,15
+Bluetooth Wireless Speaker,ELEC-SPK,Electronics,pcs,15000,22000,Waterproof portable stereo speaker,5
+Premium Orange Juice 1L,BEV-ORANGE,Beverages,cartons,950,1400,100% natural orange juice pack,10
