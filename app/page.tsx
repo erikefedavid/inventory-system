@@ -222,6 +222,80 @@ export default async function LandingPage() {
         </div>
       </section>
 
+      {/* Technical Architecture Section */}
+      <section id="tech" className="px-6 py-20 lg:px-16 bg-white border-t border-slate-200">
+        <div className="max-w-6xl mx-auto space-y-12">
+          <div className="text-center space-y-3">
+            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl text-text-primary">System Architecture & Tech Stack</h2>
+            <p className="text-sm text-text-secondary max-w-lg mx-auto">
+              StockPilot is engineered with a decoupled, high-performance web architecture built for sub-second database operations and security.
+            </p>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <Card className="hover-premium space-y-4">
+              <div className="rounded-xl bg-blue-500/10 p-3 text-blue-600 w-fit font-bold text-[10px]">
+                Next.js 16 (App Router)
+              </div>
+              <h3 className="font-bold text-base text-text-primary">React Server Components (RSC)</h3>
+              <p className="text-xs text-text-secondary leading-relaxed">
+                Zero-bundle-size rendering on the server for instant page loads. Client-side reactivity is isolated strictly to interactive charting and forms to preserve performance.
+              </p>
+            </Card>
+
+            <Card className="hover-premium space-y-4">
+              <div className="rounded-xl bg-emerald-500/10 p-3 text-emerald-600 w-fit font-bold text-[10px]">
+                MongoDB & Mongoose
+              </div>
+              <h3 className="font-bold text-base text-text-primary">Non-Relational Document Store</h3>
+              <p className="text-xs text-text-secondary leading-relaxed">
+                Utilizes flexible BSON schemas with multi-key indexes for sub-millisecond query performance on live inventories and audit logs.
+              </p>
+            </Card>
+
+            <Card className="hover-premium space-y-4">
+              <div className="rounded-xl bg-violet-500/10 p-3 text-violet-600 w-fit font-bold text-[10px]">
+                Stateless JWT Auth
+              </div>
+              <h3 className="font-bold text-base text-text-primary">Secure HttpOnly Cookie Session</h3>
+              <p className="text-xs text-text-secondary leading-relaxed">
+                Stateless verification using JSON Web Tokens (JWT) inside secure, signed, client-inaccessible cookies. Prevents XSS and CSRF authentication vectors.
+              </p>
+            </Card>
+
+            <Card className="hover-premium space-y-4">
+              <div className="rounded-xl bg-pink-500/10 p-3 text-pink-600 w-fit font-bold text-[10px]">
+                RBAC Security
+              </div>
+              <h3 className="font-bold text-base text-text-primary">Role-Based Access Controls</h3>
+              <p className="text-xs text-text-secondary leading-relaxed">
+                Strict multi-tenant security partition at the API and routing levels. Prevents data leaks between SME businesses and isolates privileges by role (Admin, Manager, Clerk).
+              </p>
+            </Card>
+
+            <Card className="hover-premium space-y-4">
+              <div className="rounded-xl bg-orange-500/10 p-3 text-orange-600 w-fit font-bold text-[10px]">
+                Recharts Engine
+              </div>
+              <h3 className="font-bold text-base text-text-primary">SVG Vector Render Visualization</h3>
+              <p className="text-xs text-text-secondary leading-relaxed">
+                Declarative interactive visualization utilizing lightweight SVG nodes to map inventory level velocity, valuations, and transactions over time.
+              </p>
+            </Card>
+
+            <Card className="hover-premium space-y-4">
+              <div className="rounded-xl bg-amber-500/10 p-3 text-amber-600 w-fit font-bold text-[10px]">
+                TypeScript Strict
+              </div>
+              <h3 className="font-bold text-base text-text-primary">Type-Safe Operations Ledger</h3>
+              <p className="text-xs text-text-secondary leading-relaxed">
+                End-to-end static typing ensures safety from API payloads down to DB mongoose queries, eliminating runtime reference errors.
+              </p>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="mt-auto border-t border-slate-200 bg-white px-6 py-8 lg:px-16 text-center text-xs text-text-secondary">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
