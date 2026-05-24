@@ -14,6 +14,8 @@ export interface IPurchaseOrder extends Document {
   notes?: string;
   createdBy: Types.ObjectId;
   businessId: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 const PurchaseOrderSchema = new Schema<IPurchaseOrder>(

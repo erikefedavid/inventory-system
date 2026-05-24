@@ -15,9 +15,9 @@ if (!MONGODB_URI) {
 }
 
 async function seed() {
-  await mongoose.connect(MONGODB_URI);
+  await mongoose.connect(MONGODB_URI!);
 
-  const existingUser = mongoose.connection.db.collection('users').findOne({ email: DEFAULT_ADMIN_EMAIL });
+  const existingUser = mongoose.connection.db!.collection('users').findOne({ email: { $regex: new RegExp(`^${DEFAULT_ADMIN_EMAIL.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`, 'i') } });
   if (await existingUser) {
     console.log('Admin user already exists. Skipping seed.');
     await mongoose.disconnect();
@@ -27,7 +27,7 @@ async function seed() {
   const password = await bcrypt.hash(DEFAULT_ADMIN_PASSWORD, 12);
   const businessId = randomBytes(12).toString('hex');
 
-  await mongoose.connection.db.collection('users').insertOne({
+  await mongoose.connection.db!.collection('users').insertOne({
     name: 'Admin',
     email: DEFAULT_ADMIN_EMAIL,
     password,

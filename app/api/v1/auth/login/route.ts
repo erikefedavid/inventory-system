@@ -8,6 +8,11 @@ import dbConnect from "@/lib/db/mongoose";
 export async function POST(req: Request) {
   try {
     await dbConnect();
+  } catch {
+    return NextResponse.json({ error: "Service unavailable" }, { status: 500 });
+  }
+
+  try {
     const json = await req.json();
     const parsed = LoginSchema.safeParse(json);
     if (!parsed.success) {

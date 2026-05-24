@@ -11,7 +11,7 @@ export async function registerUser(data: {
   businessName: string;
   role: "admin" | "manager" | "clerk";
 }) {
-  const existing = await User.findOne({ email: data.email });
+  const existing = await User.findOne({ email: { $regex: new RegExp(`^${data.email.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`, 'i') } });
   if (existing) {
     throw new Error("User already exists");
   }
@@ -30,7 +30,7 @@ export async function registerUser(data: {
 }
 
 export async function loginUser(email: string, password: string) {
-  const user = await User.findOne({ email });
+  const user = await User.findOne({ email: { $regex: new RegExp(`^${email.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`, 'i') } });
   if (!user) throw new Error("Invalid credentials");
   const valid = await bcrypt.compare(password, user.password);
   if (!valid) throw new Error("Invalid credentials");

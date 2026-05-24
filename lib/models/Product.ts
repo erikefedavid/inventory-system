@@ -15,6 +15,8 @@ export interface IProduct extends Document {
   isArchived: boolean;
   createdBy: Types.ObjectId;
   businessId: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 const ProductSchema = new Schema<IProduct>(

@@ -5,15 +5,17 @@ export type UserRole = 'admin' | 'manager' | 'clerk';
 export interface IUser extends Document {
   name: string;
   email: string;
-  password: string; // bcrypt hashed
+  password: string;
   role: UserRole;
   businessName: string;
-  businessId: string; // reference to business (could be businessName or ObjectId if separate collection)
+  businessId: string;
   phone?: string;
-  avatar?: string; // Cloudinary URL
+  avatar?: string;
   isActive: boolean;
   resetToken?: string;
   resetTokenExpiry?: Date;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 const UserSchema = new Schema<IUser>(

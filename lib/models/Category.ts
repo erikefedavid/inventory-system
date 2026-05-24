@@ -5,6 +5,8 @@ export interface ICategory extends Document {
   description?: string;
   createdBy: Types.ObjectId;
   businessId: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 const CategorySchema = new Schema<ICategory>(

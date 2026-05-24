@@ -9,6 +9,8 @@ export interface ISupplier extends Document {
   products?: Types.ObjectId[];
   isArchived: boolean;
   businessId: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 const SupplierSchema = new Schema<ISupplier>(

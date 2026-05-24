@@ -25,7 +25,7 @@ export function ValueChart({ data }: { data: { name: string; value: number }[] }
             <Cell key={i} fill={COLORS[i % COLORS.length]} />
           ))}
         </Pie>
-        <Tooltip formatter={(v: number) => `₦${v.toLocaleString()}`} />
+        <Tooltip formatter={(v) => `₦${(v ?? 0).toLocaleString()}`} />
         <Legend wrapperStyle={{ fontSize: 11 }} />
       </PieChart>
     </ResponsiveContainer>
